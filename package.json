@@ -1,10 +1,11 @@
 {
-  "name": "server",
+  "name": "uptha_server",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^6.1.0",
     "helmet": "^5.0.1",
+    "http-status-codes": "^2.2.0",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.7",
