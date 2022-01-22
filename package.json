@@ -1,5 +1,6 @@
 {
   "name": "uptha_server",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -27,6 +28,7 @@
     "mongoose": "^6.1.7",
     "morgan": "^1.10.0",
     "nodemailer": "^6.7.2",
+    "validator": "^13.7.0",
     "xss-clean": "^0.1.1"
   }
 }

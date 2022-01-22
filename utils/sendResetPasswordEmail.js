@@ -1,4 +1,4 @@
-const sendEmail = require('./sendEmail')
+import sendEmail from './sendEmail'
 
 const sendResetPasswordEmail = async ({
     name, email, token, origin
@@ -19,4 +19,4 @@ const sendResetPasswordEmail = async ({
 }
 
 
-module.exports = sendResetPasswordEmail
+export default sendResetPasswordEmail

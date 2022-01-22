@@ -1,4 +1,4 @@
-module.exports = {
+const configNodemailer = {
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
@@ -6,3 +6,5 @@ module.exports = {
         pass: 'j1cDsKqR9ycxjxsK9V'
     }
 }
+
+export default configNodemailer

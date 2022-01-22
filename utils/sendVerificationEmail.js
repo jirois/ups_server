@@ -1,4 +1,4 @@
-const sendEmail = require('./sendEmail')
+import sendEmail from './sendEmail';
 
 
 const sendVerificationEmail = async ({
@@ -16,7 +16,7 @@ const sendVerificationEmail = async ({
 
     return sendEmail({
         to: email,
-        subject: 'Email Confirmation',
+        subject: 'Email Confirmation', 
         html: `<h4>Hello, ${name}</h4>
         ${message}
         `
@@ -24,4 +24,4 @@ const sendVerificationEmail = async ({
 
 }
 
-module.exports = sendVerificationEmail
+export default sendVerificationEmail

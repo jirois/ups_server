@@ -1,13 +1,13 @@
-const CustomAPIError = require("../errors");
+import { UnauthorizedError } from "../errors";
 
 const checkPermissions = (requestUser, resourceUserId) => {
     
     if (requestUser.role === 'admin') return
     if (requestUser.userId === resourceUserId.toString()){
-        throw new CustomAPIError.UnauthorizedError(
+        throw new UnauthorizedError(
             'Not authorized to access this route'
         )
     }
 }
 
-module.exports = checkPermissions
+export default checkPermissions
