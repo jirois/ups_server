@@ -1,4 +1,4 @@
-import sendEmail from './sendEmail'
+import sendEmail from './sendEmail.js'
 
 const sendResetPasswordEmail = async ({
     name, email, token, origin

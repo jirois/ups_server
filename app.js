@@ -1,5 +1,6 @@
 import 'express-async-errors'
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 import express, { json } from 'express'
 const app = express()
@@ -16,14 +17,14 @@ import cors from 'cors'
 import mongoSanitize from 'express-mongo-sanitize'
 
 // database
-import connectDB from './db/connect'
+import connectDB from './db/connect.js'
 
 // routers
 
 
 // middleware
-import notFound from './middlewares/not-found'
-import errorHandlerMiddleware from './middlewares/error-handler'
+import notFound from './middlewares/not-found.js'
+import errorHandlerMiddleware from './middlewares/error-handler.js'
 
 
 app.set('trust proxy', 1)
@@ -42,7 +43,7 @@ app.use(json())
 app.use(cookieParser(process.env.JWT_SECRET))
 
 
-app.get("/", (req,res) => {
+app.get("/", (req, res) => {
     res.send(`
      <h1>Welcome Home!</h1>
     `)
@@ -55,6 +56,7 @@ app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 5000
 const start = async () => {
+    await connectDB(process.env.MONGO_URI)
     app.listen(port, () => {
         console.log(`port is listen at http://localhost:${port}/`);
     })
