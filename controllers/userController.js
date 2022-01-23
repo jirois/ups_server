@@ -1,8 +1,8 @@
-import User from '../models/User'
+import User from '../models/User.js'
 import { StatusCodes } from 'http-status-codes'
-import { createTokenUser, checkPermissions } from '../utils'
-import { BadRequestError, NotFoundError, UnauthenticatedError } from '../errors';
-import { attachCookiesToResponse } from '../utils/jwt';
+import { createTokenUser, checkPermissions } from '../utils/index.js'
+import { BadRequestError, NotFoundError, UnauthenticatedError } from '../errors/index.js';
+import { attachCookiesToResponse } from '../utils/jwt.js';
 
 const getAllUsers = async (req, res) => {
     console.log(req.user);
@@ -59,7 +59,7 @@ const updateUserPassword = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: 'Success! Password Updated.' })
 }
 
-export default {
+export {
     getAllUsers,
     getSingleUser,
     showCurrentUser,

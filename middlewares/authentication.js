@@ -1,7 +1,7 @@
-import { UnauthenticatedError, UnauthorizedError } from '../errors'
-import { isTokenValid } from '../utils'
-import Token from '../models/Token'
-import { attachCookiesToResponse } from '../utils'
+import { UnauthenticatedError, UnauthorizedError } from '../errors/index.js'
+import { isTokenValid } from '../utils/index.js'
+import Token from '../models/Token.js'
+import { attachCookiesToResponse } from '../utils/index.js'
 
 const authenticateUser = async (req, res, next) => {
     const { refreshToken, accesssToken } = req.signedCookies
@@ -13,7 +13,7 @@ const authenticateUser = async (req, res, next) => {
             return next()
         }
         const payload = isTokenValid(refreshToken)
-        
+
         const existingToken = await Token.findOne({
             user: payload.user.userId,
             refreshToken: payload.refreshToken
@@ -48,7 +48,7 @@ const authorizePermissions = (...roles) => {
     }
 }
 
-export default {
+export {
     authenticateUser,
     authorizePermissions
 }

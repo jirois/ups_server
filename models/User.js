@@ -1,8 +1,8 @@
-import { Schema, model } from 'mongoose'
-import { isEmail } from 'validator'
-import { genSalt, hash, compare } from 'bcryptjs'
+import mongoose from 'mongoose'
+import validator from 'validator'
+import bcrypt from 'bcryptjs'
 
-const UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     name: {
         type: String,
         require: [true, 'Please provide name'],
@@ -14,7 +14,7 @@ const UserSchema = new Schema({
         unique: true,
         require: [true, 'Please provide email'],
         validate: {
-            validator: isEmail,
+            validator: validator.isEmail,
             message: 'Please provide valid email'
         },
     },
@@ -25,10 +25,10 @@ const UserSchema = new Schema({
     },
     role: {
         type: String,
-        enum : ['admin', 'user'],
+        enum: ['admin', 'user'],
         default: 'user'
     },
-    verificationToken : String,
+    verificationToken: String,
     isVerified: {
         type: Boolean,
         default: false,
@@ -42,15 +42,15 @@ const UserSchema = new Schema({
     }
 })
 
-UserSchema.pre('save', async function() {
+UserSchema.pre('save', async function () {
     if (!this.isModified('password')) return
-    const salt = await genSalt(10)
-    this.password = await hash(this.password, salt)
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password, salt)
 })
 
-UserSchema.methods.comparePassword = async function(canditatePassword) {
-    const isMatch = await compare(canditatePassword, this.password)
+UserSchema.methods.comparePassword = async function (canditatePassword) {
+    const isMatch = await bcrypt.compare(canditatePassword, this.password)
     return isMatch
 }
 
-export default model('User', UserSchema)
+export default mongoose.model('User', UserSchema)

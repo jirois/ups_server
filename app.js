@@ -20,7 +20,8 @@ import mongoSanitize from 'express-mongo-sanitize'
 import connectDB from './db/connect.js'
 
 // routers
-
+import authRouter from './routes/authRoutes.js'
+import userRouter from './routes/userRoutes.js'
 
 // middleware
 import notFound from './middlewares/not-found.js'
@@ -48,6 +49,10 @@ app.get("/", (req, res) => {
      <h1>Welcome Home!</h1>
     `)
 })
+
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/user', userRouter)
+
 
 
 app.use(notFound)

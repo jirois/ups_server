@@ -7,4 +7,15 @@ const configNodemailer = {
     }
 }
 
-export default configNodemailer
+const configNodemailerGmail = {
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD
+    }
+}
+
+export {
+    configNodemailer,
+    configNodemailerGmail
+}

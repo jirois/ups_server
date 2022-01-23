@@ -1,11 +1,11 @@
-import { createJWT, isTokenValid, attachCookiesToResponse } from "./jwt";
-import createTokenUser from './createTokenUser';
-import checkPermissions from './checkPermissions';
-import sendVerificationEmail from './sendResetPasswordEmail';
-import sendResetPasswordEmail from './sendResetPasswordEmail';
-import createHash from './createHash';
+import { createJWT, isTokenValid, attachCookiesToResponse } from "./jwt.js";
+import createTokenUser from './createTokenUser.js';
+import checkPermissions from './checkPermissions.js';
+import sendVerificationEmail from './sendResetPasswordEmail.js';
+import sendResetPasswordEmail from './sendResetPasswordEmail.js';
+import createHash from './createHash.js';
 
-export default {
+export {
     createJWT,
     isTokenValid,
     attachCookiesToResponse,

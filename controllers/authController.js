@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import Token from "../models/Token";
-import User from "../models/User";
+import Token from "../models/Token.js";
+import User from "../models/User.js";
 import {
     attachCookiesToResponse,
     createTokenUser,
@@ -8,9 +8,9 @@ import {
     sendResetPasswordEmail,
     createHash
 }
-    from "../utils";
+    from "../utils/index.js";
 import { randomBytes } from 'crypto'
-import { BadRequestError, CustomAPIError, UnauthenticatedError } from "../errors";
+import { BadRequestError, CustomAPIError, UnauthenticatedError } from "../errors/index.js";
 
 const register = async (req, res) => {
     const { email, name, password } = req.body
@@ -193,7 +193,7 @@ const resetPassword = async (req, res) => {
     res.send('reset password')
 }
 
-export default {
+export {
     register,
     login,
     logout,
