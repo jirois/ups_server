@@ -4,10 +4,10 @@ import Token from '../models/Token.js'
 import { attachCookiesToResponse } from '../utils/index.js'
 
 const authenticateUser = async (req, res, next) => {
-    const { refreshToken, accesssToken } = req.signedCookies
+    const { refreshToken, accessToken } = req.signedCookies
 
     try {
-        if (accesssToken) {
+        if (accessToken) {
             const payload = isTokenValid(accessToken)
             req.user = payload.user
             return next()
@@ -41,7 +41,7 @@ const authorizePermissions = (...roles) => {
     return (req, res, next) => {
         if (!roles.includes(req.user.role)) {
             throw new UnauthorizedError(
-                'Unathorized to access this route'
+                'Unauthorized to access this route'
             )
         }
         next()

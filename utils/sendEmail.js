@@ -1,9 +1,9 @@
 import { createTransport } from 'nodemailer'
-import { nodemailerConfig } from './nodemailerConfig.js'
+import { configNodemailer, configNodemailerAuth } from './nodemailerConfig.js'
 
 
 const sendEmail = async ({ to, subject, html }) => {
-    const transporter = createTransport(nodemailerConfig)
+    const transporter = createTransport(configNodemailerAuth)
     return transporter.sendMail({
         from: '"Uptha Co" <upthaco@info.com>',
         to,

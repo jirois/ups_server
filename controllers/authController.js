@@ -91,7 +91,7 @@ const login = async (req, res) => {
         throw new UnauthenticatedError('Invalid Credentials')
     }
     if (!user.isVerified) {
-        throw new UnauthenticatedError('Pleasw verify your email')
+        throw new UnauthenticatedError('Please verify your email')
     }
 
     const tokenUser = createTokenUser(user)
@@ -120,7 +120,7 @@ const login = async (req, res) => {
     await Token.create(userToken)
 
     attachCookiesToResponse({ res, user: tokenUser, refreshToken })
-    res.status(StatusCodes.Ok).json({ user: tokenUser })
+    res.status(StatusCodes.OK).json({ user: tokenUser })
 }
 
 const logout = async (req, res) => {
